@@ -1,0 +1,21 @@
+.estatua   {
+	margin-top:200px;
+}
+
+.casablanca{ 
+	width:200px;
+	margin:20px;
+	
+}
+
+h2 {
+	font-size: 25px;
+}
+#data .noData { font-size:20px;
+	text-align: center;
+		
+}
+
+.searchBox{
+	text-align:center;
+}

@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<!--	<script src="https://cdn.datatables.net/1.10.18/js/dataTables.bootstrap.min.js"></script>-->
+	<script src="https://cdn.datatables.net/1.10.18/js/jquery.dataTables.min.js"></script>
+	<link rel="stylesheet" href="https://cdn.datatables.net/1.10.18/css/dataTables.bootstrap.min.css">
+
+	<link rel="stylesheet" type="text/css" href="style.css">
+	<title>Senate</title>
+</head>
+
+<body data-congress="senate">
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-6">
+				<a href="#"><img src="images/white-house-logo-6.jpg" class="img-responsive casablanca" ></a>
+			</div>
+		</div>
+		<div class="text-right">
+			<a href="info@tgif.net">  <span class="glyphicon glyphicon-envelope"> </span>info@tgif.net </a>
+		</div>
+
+		<nav class="navbar navbar-default">
+			<div class="container-fluid">
+				<ul class="nav navbar-nav">
+					<li><a href="home-starter-page.html">Home</a></li>
+					<li class="dropdown"> <a class=" dropdown-toggle" data-toggle="dropdown" href="#">Congress 113</a>
+						<ul class="dropdown-menu">
+							<li><a href="senate-starter-page.html">Senate</a></li>
+							<li><a href="house-starter-page.html">House</a></li>
+						</ul>
+					</li>
+					<li class="dropdown"> <a class="dropwdown-toggle" data-toggle="dropdown" href="#"> Attendance </a>
+						<ul class="dropdown-menu">
+							<li> <a href="Senate%20Attendance.html"> Senate </a></li>
+							<li> <a href="House%20Attendance.html"> House</a> </li>
+						</ul>
+					</li>
+					<li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#"> Loyalty</a>
+						<ul class="dropdown-menu">
+							<li> <a href="Senate%20Party%20Loyalty.html"> Senate </a></li>
+							<li> <a href="House%20Party%20Loyalty.html"> House </a></li>
+						</ul>
+					</li>
+				</ul>
+			</div>
+		</nav>
+	</div>
+	<div class="container" id="app">
+		<div class="row">
+			<div class="col-lg-6">
+			  <h2>Senate</h2>
+				<p>First convened in 1789, the composition and powers of the Senate are established in Article One of the U.S. Constitution. Each state is represented by two senators, regardless of population, who serve staggered six-year terms. The Senate has several exclusive powers not granted to the House, including consenting to treaties as a precondition to their ratification and consenting to or confirming appointments of Cabinet secretaries, federal judges, other federal executive officials, military officers, regulatory officials, ambassadors, and other federal uniformed officers, as well as trial of federal officials impeached by the House.</p>
+			</div>
+			<div class="col-lg-12 table-responsive">
+				<div class=row>
+					<div class="Checkbox col-lg-6 " id="checkboxes">
+						<label> Filter by party:</label>
+						<label><input type="checkbox" id="checkboxR" value="R" > Republican</label>
+						<label><input type="checkbox" id="checkboxD"  value="D"> Democrat</label>
+						<label><input type="checkbox" id= "checkboxI" value="I"> Independent</label>
+					</div>
+					<div class="col-lg-6">
+						<label>Filter by state: </label>
+						<select id="FilterByState">
+							<option value="All"> All</option>
+						</select>
+					</div>
+				</div>
+				<table class="table" id="search">
+					<thead id="headdata">
+						<tr>
+							<th v-for="thead in theads">{{thead}}</th>
+						</tr>
+					</thead>
+					<tbody id="data">
+						<tr v-for="member in members">
+							<td><a v-bind:href="member.url"> {{member.first_name}} {{member.middle_name}} {{member.last_name}}</a></td>
+							<td> {{member.party}}</td>
+							<td>{{member.state}}</td>
+							<td>{{member.seniority}}</td>
+							<td> {{member.votes_with_party_pct}} %</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+		<div class="container">
+			<div class="footer-copyright text-center bg-info">
+				<p>&copy; 2016 TGIF| All Rights Reserved </p>
+			</div>
+		</div>
+		<!--<script src="pro-congress-113-senate.js"></script>-->
+		<script src="https://cdn.jsdelivr.net/npm/vue"></script>
+		<script src="senate-house.js">
+		</script>
+	</div>
+
+</body>
+
+</html>
