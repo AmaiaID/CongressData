@@ -15,6 +15,8 @@ var leastEngagedM = [];
 var mostEngagedM = [];
 var mostLoyal = [];
 var leastLoyal = [];
+var chamber;
+var readMore= document.getElementById("readM");
 
 var app = new Vue({
 	el: '#app',
@@ -36,7 +38,17 @@ app.membersLE = leastEngagedM;
 app.membersLL = leastLoyal;
 app.membersML = mostLoyal;
 
-var chamber;
+if (readMore!=null){ // To avoid getting errors while loading other pages, if null doesnt exist, don´t do it. 
+readMore.addEventListener("click", function(){
+	
+if(readMore.textContent=="Read More") {
+	readMore.textContent="Read Less";
+} else {
+	readMore.textContent="Read More";
+}
+});
+}
+
 
 if (document.body.getAttribute("data-chamber") == "senate") {
 	chamber="senate";
@@ -199,15 +211,3 @@ function sortLeastLoyal(members) {
 	}
 }
 
-var readMore= document.getElementById("readM");
-
-if (readMore!=null){ // To avoid getting errors while loading other pages, if null doesnt exist, don´t do it. 
-readMore.addEventListener("click", function(){
-	
-if(readMore.textContent=="Read More") {
-	readMore.textContent="Read Less";
-} else {
-	readMore.textContent="Read More";
-}
-});
-}

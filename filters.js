@@ -1,6 +1,7 @@
 var listStates = [];
 var selectedMembers = [];
 var members = [];
+var chamber;//Create a variable named "chamber" to select the data corresponding to Senate or House adn then 
 
 var app = new Vue({
 	el: '#app',
@@ -10,9 +11,6 @@ var app = new Vue({
 	}
 });
 
-//Create a variable named "chamber" to select the data corresponding to Senate or House adn then 
-
-var chamber;
 
 if (document.body.getAttribute("data-congress") == "senate") {
 	chamber = "senate"
@@ -47,17 +45,8 @@ fetch("https://api.propublica.org/congress/v1/113/" + chamber + "/members.json",
 });
 
 
-//  Get the HTML element corresponding to each Checkbox 
-
-var checkboxR = document.getElementById("checkboxR");
-var checkboxD = document.getElementById("checkboxD");
-var checkboxI = document.getElementById("checkboxI");
-
-//filtered();   //  If I call this function without nothing selected, it is gonna create an empty createbody function and show no initial table
-
-function filtered(members) { // quiero que me devuelva una rray con los members que pasan bien por los filtros, declarar un nuevo array
+function filtered(members) {
 	console.log(members);
-
 	selectedMembers = []; // It needs to be empty every time we change the checkbox values, it needs to be before the loop 
 
 	for (var i = 0; i < members.length; i++) {
@@ -79,13 +68,27 @@ function filtered(members) { // quiero que me devuelva una rray con los members 
 	}
 	createNoData(selectedMembers);
 }
-/*	createBody(selectedMembers);*/
 
+//  Get the HTML element corresponding to each Checkbox 
+
+var checkboxR = document.getElementById("checkboxR");
+var checkboxD = document.getElementById("checkboxD");
+var checkboxI = document.getElementById("checkboxI");
+
+// Create event listener
+checkboxR.addEventListener("click", function () {
+	filtered(members);
+});
+checkboxD.addEventListener("click", function () {
+	filtered(members);
+});
+checkboxI.addEventListener("click", function () {
+	filtered(members);
+});
 
 console.log(selectedMembers.length);
 
 function createNoData(selectedMembers) {
-
 	if (selectedMembers.length == 0) { // If there are no members 
 		if (!document.getElementsByClassName('noData')[0]) { // If noData does not exist
 			var noData = document.getElementById("data");
@@ -107,23 +110,7 @@ function createNoData(selectedMembers) {
 	}
 	app.members = selectedMembers;
 }
-
-// Create event listener
-
-checkboxR.addEventListener("click", function () {
-	filtered(members);
-});
-
-checkboxD.addEventListener("click", function () {
-	filtered(members);
-});
-checkboxI.addEventListener("click", function () {
-	filtered(members);
-});
-
-
 // filterDropDown function is going to avoid repeating the states. If the state is not already included, push it into the listStates array.  It avoids duplication of information.
-
 function filterDropdown(members) {
 	for (var i = 0; i < members.length; i++) {
 		if (!listStates.includes(members[i].state)) {
@@ -149,3 +136,5 @@ function createDropdownSort() {
 FilterByState.addEventListener("change", function () {
 	filtered(members);
 });
+
+
